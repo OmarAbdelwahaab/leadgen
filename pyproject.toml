@@ -1,0 +1,32 @@
+[project]
+name = "leadgen"
+version = "0.1.0"
+description = "Standalone local business lead finder, verifier, and facts exporter"
+requires-python = ">=3.11"
+dependencies = [
+  "python-dotenv>=1.0",
+  "httpx>=0.27",
+  "pydantic>=2.6",
+  "phonenumbers>=8.13",
+  "timezonefinder>=6.5",
+  "tzdata; sys_platform == 'win32'",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+]
+
+[project.scripts]
+leadgen = "leadgen.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
